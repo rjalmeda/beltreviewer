@@ -26,17 +26,17 @@
                 {% for book1 in recentbooks %}
                     <p><a href="/books/bookreviews/{{book1.id}}">{{book1.title}}</a></p>
                     <p>Ratings: {{book1.review_book.last.stars}}</p>
-                    <p>Review: recent review {{book1.review_book.last.review}}</p><br>
+                    <p><a href="/displayuser/{{book1.review_book.last.FK_userid.id}}">{{book1.review_book.last.FK_userid.first_name}}</a> says: {{book1.review_book.last.review}}</p><br>
                 {% endfor %}
             {% endif %}
         </div>
         <div class="booklist">
             <h3>Other Books with Reviews:</h3><br>
-            <textarea style="resize:none;" cols="30" rows="20">
+            <div class="otherbooks" style="width:180px;border:2px solid black;height:200px;overflow:auto">
                 {% for book2 in otherbooks %}
-                    <p><a href="/books/bookreviews/{{book2.id}}">{{book2.title}}</a></p>
+                    <p style="padding:4px;"><a href="/books/bookreviews/{{book2.id}}">{{book2.title}}</a></p>
                 {% endfor %}
-            </textarea>
+            </div>
         </div>
     </div>
 

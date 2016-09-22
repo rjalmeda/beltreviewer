@@ -27,8 +27,8 @@ def displayuser(request, targetid):
     context = {}
     targetuser = Users.objects.get(id=targetid)
     context['targetuser'] = targetuser
-    targetbooks = BookReviews.objects.filter(FK_userid=targetid)
-    context['targetbooks'] = targetbooks
+#    targetbooks = BookReviews.objects.filter(FK_userid=targetid)
+#    context['targetbooks'] = targetbooks
     return render(request, 'mylogin/displayuser.html', context)
 
 def register(request):

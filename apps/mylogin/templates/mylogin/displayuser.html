@@ -15,10 +15,12 @@
     <div class="userinfo">
         <h3>User: {{targetuser.first_name}} {{targetuser.last_name}}</h3>
         <p>Email: {{targetuser.email}}</p>
-        <p>Total Reviews: </p>
+        <p>Total Reviews: {{targetuser.review_user.all.count}}</p>
         
         <h3 style="margin-top: 40px">Posted Reviews on the following books</h3>
-        
+        {% for book in targetuser.review_user.all %}
+            <p><a href="/bookreviews/{{book.FK_book.id}}">{{book.FK_book.title}}</a><p></p>
+        {% endfor %}
     </div>
 
 </body>
