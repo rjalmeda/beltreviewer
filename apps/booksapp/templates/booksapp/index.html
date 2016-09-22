@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Books!</title>
+    <style>
+        div.bookandreviews, div.booklist {
+            display:inline-block;
+            vertical-align:top;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="wrapper">
+        <h2>Welcome, {{request.session.first_name}}!</h2>
+        <div class="bookandreviews">
+        <h3>Recent Book Reviews:</h3>
+            {% if recentbooks %}
+                {% for book1 in recentbooks %}
+                    <p><a href="/books/bookreviews/{{book1.id}}">{{book1.title}}</a></p>
+                    <p>Ratings: {{book1.review_book.last.stars}}</p>
+                    <p>Review: recent review {{book1.review_book.last.review}}</p><br>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="booklist">
+            <h3>Other Books with Reviews:</h3><br>
+            <textarea style="resize:none;" cols="30" rows="20">
+                {% for book2 in otherbooks %}
+                    <p><a href="/books/bookreviews/{{book2.id}}">{{book2.title}}</a></p>
+                {% endfor %}
+            </textarea>
+        </div>
+    </div>
+
+
+</body>
+</html>

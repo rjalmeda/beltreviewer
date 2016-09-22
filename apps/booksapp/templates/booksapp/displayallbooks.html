@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Books!</title>
+    <style>
+        div.bookandreviews, div.booklist {
+            display:inline-block;
+            vertical-align:top;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    <div style="margin-top:40px;">
+        {% for book in allbooks %}
+            ID#: {{book.id}} - Title: {{book.title}} - Reviews: {% for review in book.review_book.all%} {{review.review}} {% endfor %}<br>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

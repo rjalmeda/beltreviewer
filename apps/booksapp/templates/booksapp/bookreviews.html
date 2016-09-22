@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Books!</title>
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    
+booksreview
+
+
+</body>
+</html>

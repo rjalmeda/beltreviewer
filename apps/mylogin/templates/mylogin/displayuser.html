@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Reviews</title>
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="userinfo">
+        <h3>User: {{targetuser.first_name}} {{targetuser.last_name}}</h3>
+        <p>Email: {{targetuser.email}}</p>
+        <p>Total Reviews: </p>
+        
+        <h3 style="margin-top: 40px">Posted Reviews on the following books</h3>
+        
+    </div>
+
+</body>
+</html>

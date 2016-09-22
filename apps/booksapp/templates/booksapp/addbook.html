@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Books!</title>
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="wrapper">
+        <h3>Add a new book title and a review</h3>
+        <form action="/books/createbook" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>
+                        <label for="booktitle">Book Title: </label>
+                    </td>
+                    <td>
+                        <input id="booktitle" type="text" size="30" name="title"></br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="author">Author: </label>
+                    </td>
+                    <td>
+                        <input id="author" type="text" size="30" name="author">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="review">Review: </label>
+                    </td>
+                    <td>
+                        <textarea id="review" name="review" cols="30" rows="3" style="resize:none;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="stars">Rating: </label>
+                        <select id="stars" name="stars">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+
+</body>
+</html>

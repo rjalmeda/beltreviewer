@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <meta http-equiv="refresh" content="5;url=/" />
+</head>
+<body>
+    <div class="header">
+    <a href="/books">Home</a> | <a href="/books/addbook">Add a book and Review</a> | 
+        {% if request.session.first_name %}
+            {{request.session.first_name}} is logged in | 
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+    {% if request.session.first_name %}
+    <h1>SUCCESS! Welcome, {{request.session.first_name}}!</h1>
+    {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:green;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    <h4>Redirecting in 5 seconds...</h4>
+</body>
+</html>
